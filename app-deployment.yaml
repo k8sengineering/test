@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: saleskickoff-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: saleskickoff-app
+  template:
+    metadata:
+      labels:
+        app: saleskickoff-app
+    spec:
+      containers:
+      - name: saleskickoff-app
+        image: bruceejacobs/saleskickoff-app:latest
+        ports:
+        - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: saleskickoff-service
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+  selector:
+    app: saleskickoff-app
