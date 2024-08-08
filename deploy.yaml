@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sko-welcome
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: sko-welcome
+  template:
+    metadata:
+      labels:
+        app: sko-welcome
+    spec:
+      containers:
+      - name: nginx
+        image: yourusername/sko-welcome:latest
+        ports:
+        - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: sko-welcome
+spec:
+  type: LoadBalancer
+  selector:
+    app: sko-welcome
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80
