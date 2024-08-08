@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: yourusername/sko-welcome:latest
+        image: bruceejacobs/sko-welcome:latest
         ports:
         - containerPort: 80
 ---
