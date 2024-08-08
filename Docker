@@ -1,0 +1,2 @@
+docker build -t yourusername/sko-welcome:latest .
+docker push yourusername/sko-welcome:latest
